@@ -334,6 +334,10 @@ async def get_unique_dimension_values(dimension: str):
         traceback.print_exc()
         raise HTTPException(status_code=500, detail="Failed to fetch unique dimension values.")
     
+@app.get("/")
+async def health_check():
+    return {"status": "ok", "message": "API is running"}
+    
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
